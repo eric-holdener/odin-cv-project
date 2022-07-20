@@ -4,6 +4,7 @@ import HeaderFooter from './components/HeaderFooter';
 import PersonalInformation from './components/PersonalInformation';
 import Education from './components/Education';
 import Experience from './components/Experience';
+import RenderCV from './components/CV';
 import { useEffect, useState } from "react";
 
 
@@ -14,15 +15,19 @@ function App() {
   const [userInfo, setUserInfo] = useState({});
 
   function renderComponents() {
-    if (personalInfoSubmit == true && educationSubmit == true) {
-      console.log(userInfo)
+    if (personalInfoSubmit == true && educationSubmit == true && experienceSubmit == true) {
+      return (
+        <>
+          <RenderCV userInfo={userInfo}/>
+        </>
+      )
+    } else if (personalInfoSubmit == true && educationSubmit){
       return (
         <>
           <Experience stateChanger={setExperienceSubmit} setUserInfo={setUserInfo}/>
         </>
       )
-    } else if (personalInfoSubmit == true){
-      console.log(userInfo)
+    } else if (personalInfoSubmit == true) {
       return (
         <>
           <Education stateChanger={setEducationSubmit} setUserInfo={setUserInfo}/>
