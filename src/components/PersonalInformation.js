@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Forms } from "./Styles";
 
-export default function PersonalInformation() {
-  const [phoneNumber, setPhoneNumber] = useState();
+export default function PersonalInformation(props) {
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-  function handleSubmit() {
-
+  function handleSubmit(e) {
+    props.stateChanger(true);
   }
 
   function handlePhoneChange(phoneNumberString) {
@@ -15,12 +15,12 @@ export default function PersonalInformation() {
       setPhoneNumber('(' + match[1] + ') ' + match[2] + '-' + match[3]);
       return;
     }
-    setPhoneNumber(null);
+    setPhoneNumber(cleaned);
     return;
   }
 
   return(
-    <Forms>
+    <Forms onSubmit={e => {handleSubmit(e)}}>
         <div>
           <label htmlFor="firstName">First Name</label>
           <input name="firstName" type="text"/>
@@ -35,10 +35,10 @@ export default function PersonalInformation() {
         </div>
         <div>
           <label htmlFor="phone">Phone Number</label>
-          <input name="phone" type="tel" onChange={(e) => handlePhoneChange(e.target.value)} value={phoneNumber}/>
+          <input name="phone" type="text" onChange={(e) => handlePhoneChange(e.target.value)} value={phoneNumber}/>
         </div>
         <div>
-          <button onClick={() => handleSubmit()}>Submit</button>
+          <input type="submit" value="Submit" />
         </div>
     </Forms>
   )
