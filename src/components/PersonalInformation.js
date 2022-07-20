@@ -3,8 +3,17 @@ import { Forms } from "./Styles";
 
 export default function PersonalInformation(props) {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
 
   function handleSubmit(e) {
+    props.setUserInfo({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phoneNumber
+    })
     props.stateChanger(true);
   }
 
@@ -23,15 +32,15 @@ export default function PersonalInformation(props) {
     <Forms onSubmit={e => {handleSubmit(e)}}>
         <div>
           <label htmlFor="firstName">First Name</label>
-          <input name="firstName" type="text"/>
+          <input name="firstName" type="text" onChange={(e) => setFirstName(e.target.value)}/>
         </div>
         <div>
           <label htmlFor="lastName">Last Name</label>
-          <input name="lastName" type="text"/>
+          <input name="lastName" type="text" onChange={(e) => setLastName(e.target.value)}/>
         </div>
         <div>
           <label htmlFor="email">Email</label>
-          <input name="email" type="email"/>
+          <input name="email" type="email" onChange={(e) => setEmail(e.target.value)}/>
         </div>
         <div>
           <label htmlFor="phone">Phone Number</label>

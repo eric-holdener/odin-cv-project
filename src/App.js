@@ -15,12 +15,14 @@ function App() {
 
   function renderComponents() {
     if (personalInfoSubmit == true && educationSubmit == true) {
+      console.log(userInfo)
       return (
         <>
           <Experience stateChanger={setExperienceSubmit} setUserInfo={setUserInfo}/>
         </>
       )
     } else if (personalInfoSubmit == true){
+      console.log(userInfo)
       return (
         <>
           <Education stateChanger={setEducationSubmit} setUserInfo={setUserInfo}/>
