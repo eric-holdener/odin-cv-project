@@ -36,7 +36,7 @@ export default function Experience(props) {
         </div>
         <div>
           <label htmlFor="description">Job Description</label>
-          <input name="description" type="text" onChange={(e) => setDescription(e.target.value)}/>
+          <input name="description" type="textarea" onChange={(e) => setDescription(e.target.value)}/>
         </div>
         <div>
           <label htmlFor="startDate">Start Date</label>
